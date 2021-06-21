@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas{
+    position: absolute;
+    left: calc(50% + 5px);
+    top: calc(40% + 5px);
+}
+
+.fullBody{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+    height: 100%;
+    width: 100%;
+}
+
+.halfPage {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.auswahl{
+    height: 40%;
+}
+
+.uploadedPicture{
+    height: 60%;
+}
+
+#testImage{
+    max-height: 100%;
+    max-width: 100%;
+}
