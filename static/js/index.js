@@ -1,7 +1,13 @@
 const socket = io.connect('http://127.0.0.1:5000');
 let oldCanvas;
+let started = false;
 socket.on( 'connect', function() {
     console.log("SOCKET CONNECTED")
+    if (started)
+    {
+        loadNames()
+        showTestImage()
+    }
 })
 
 const size = 512;
@@ -29,6 +35,7 @@ Promise.all([
 
 function startPage() {
     console.log("startPage");
+    started = true;
     const image = document.getElementById("testImage");
     loadNames();
     showTestImage();
