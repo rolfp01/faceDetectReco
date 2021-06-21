@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Face Detection</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+</head>
+
+<body>
+<div class="fullBody">
+    <div class="halfPage">
+        <div class="auswahl">
+            <form action="/uploadLabeled" method="POST" enctype="multipart/form-data">
+                <h3>Hier Bild hochladen mit Namen</h3>
+                <label for="namen">
+                    <select name="namen" id="namen">
+                    </select>
+                </label>
+                <br>
+                Falls dein Name noch nicht drin sein sollte, drückt die Checkbox und trage deinen Namen ein<br>
+                <label for="neu">
+                    <input type="checkbox" id="neu" name="neu" autocomplete="off" onchange="handleCheckBoxChange()" />
+                </label>
+                <label for="newName">Name:</label>
+                <input type="text" id="newName" name="newName"><br>
+                <input type="file" name="file"/>
+                <input type="submit"/>
+            </form>
+        </div>
+        <div class="uploadedPicture">
+
+        </div>
+    </div>
+    <div class="halfPage">
+        <div class="auswahl">
+            <h3>Hier das Bild hochladen um Gesichter zu erkennen</h3>
+            <form action="/upload" method="POST"
+                  enctype="multipart/form-data">
+                <input type="file" name="file"/>
+                <input type="submit"/>
+            </form>
+        </div>
+        <div class="uploadedPicture">
+            <img src="../static/test_images/test.jpg" alt="" id="testImage"/>
+        </div>
+    </div>
+</div>
+<!--video id="video" width="720px" height="560px" autoplay muted></video-->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/js/face-api.min.js"></script>
+<script type="text/javascript" src="../static/js/index.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        handleCheckBoxChange();
+    });
+    var neuerName=true;
+    function handleCheckBoxChange() {
+        console.log("change");
+        neuerName = !neuerName;
+        console.log(neuerName);
+        document.getElementById("namen").disabled = neuerName;
+        document.getElementById("newName").disabled = !neuerName;
+    }
+</script>
+</html>
